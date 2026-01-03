@@ -70,24 +70,20 @@ const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => 
           style={styles.loginButton}
           onPress={() => navigation.navigate('Login')}
         >
-          <Text style={styles.loginIcon}>👤</Text>
           <View style={styles.buttonTextContainer}>
             <Text style={styles.loginButtonText}>Login</Text>
             <Text style={styles.loginButtonSubtext}>Already have an account</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.signupButton}
           onPress={() => navigation.navigate('Signup')}
         >
-          <Text style={styles.signupIcon}>✨</Text>
           <View style={styles.buttonTextContainer}>
             <Text style={styles.signupButtonText}>Create Account</Text>
             <Text style={styles.signupButtonSubtext}>New to AgriPocket</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
 
         {/* Divider */}
@@ -183,16 +179,12 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 16,
-    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 16,
   },
-  loginIcon: {
-    fontSize: 28,
-    marginRight: 16,
-  },
   buttonTextContainer: {
-    flex: 1,
+    alignItems: 'center',
   },
   loginButtonText: {
     color: '#FFFFFF', // White
@@ -209,13 +201,9 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 16,
-    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 24,
-  },
-  signupIcon: {
-    fontSize: 28,
-    marginRight: 16,
   },
   signupButtonText: {
     color: '#2E7D32', // Forest Green

@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Image,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
@@ -91,7 +92,11 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
         </TouchableOpacity>
 
         <View style={styles.header}>
-          <Text style={styles.logo}>🌾</Text>
+          <Image 
+            source={require('../../assets/mylogo.png')} 
+            style={styles.logo}
+            resizeMode="contain"
+          />
           <Text style={styles.title}>Create Account</Text>
           <Text style={styles.subtitle}>
             Start your sustainable investment journey
@@ -209,7 +214,8 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   logo: {
-    fontSize: 50,
+    width: 100,
+    height: 100,
     marginBottom: 12,
   },
   title: {

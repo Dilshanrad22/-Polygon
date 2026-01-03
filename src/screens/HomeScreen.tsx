@@ -58,6 +58,21 @@ const HomeScreen: React.FC = () => {
     setIsSubmitting(true);
     
     try {
+      // For guest users, create investment locally without saving to backend
+      if (isGuest) {
+        const localInvestment: Investment = {
+          id: Date.now(), // Use timestamp as temporary ID
+          farmer_name: input.farmer_name.trim(),
+          amount: parseFloat(input.amount),
+          crop: input.crop.trim(),
+          created_at: new Date().toISOString(),
+        };
+        setInvestments(prev => [localInvestment, ...prev]);
+        setIsSubmitting(false);
+        return true;
+      }
+      
+      // For authenticated users, save to backend
       const createdInvestment = await createInvestment(input);
       setInvestments(prev => [createdInvestment, ...prev]);
       setIsSubmitting(false);
@@ -199,7 +214,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   logoutButton: {
-    backgroundColor: '#8D6E63', // Soil Brown
+    backgroundColor: '#D32F2F', // Red
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,

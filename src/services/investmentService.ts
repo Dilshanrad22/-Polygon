@@ -1,13 +1,22 @@
 import { Investment, NewInvestmentInput, ApiError } from '../types';
 import { API_ENDPOINTS } from '../config/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const AUTH_TOKEN_KEY = '@AgriPocket:token';
 
 /**
- * Fetches all investments from the API
+ * Fetches all investments from the API for the authenticated user
  * @returns Promise with array of investments
  * @throws Error if the request fails
  */
 export const fetchInvestments = async (): Promise<Investment[]> => {
-  const response = await fetch(API_ENDPOINTS.investments);
+  const token = await AsyncStorage.getItem(AUTH_TOKEN_KEY);
+  
+  const response = await fetch(API_ENDPOINTS.investments, {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
   
   if (!response.ok) {
     const errorData: ApiError = await response.json().catch(() => ({}));
@@ -24,10 +33,13 @@ export const fetchInvestments = async (): Promise<Investment[]> => {
  * @throws Error if the request fails or validation fails
  */
 export const createInvestment = async (input: NewInvestmentInput): Promise<Investment> => {
+  const token = await AsyncStorage.getItem(AUTH_TOKEN_KEY);
+  
   const response = await fetch(API_ENDPOINTS.investments, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify({
       farmer_name: input.farmer_name.trim(),

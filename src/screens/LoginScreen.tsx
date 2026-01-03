@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Image,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
@@ -77,7 +78,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         </TouchableOpacity>
 
         <View style={styles.header}>
-          <Text style={styles.logo}>🌾</Text>
+          <Image 
+            source={require('../../assets/mylogo.png')} 
+            style={styles.logo}
+            resizeMode="contain"
+          />
           <Text style={styles.title}>Welcome Back</Text>
           <Text style={styles.subtitle}>
             Sign in to continue managing your investments
@@ -173,7 +178,8 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   logo: {
-    fontSize: 60,
+    width: 100,
+    height: 100,
     marginBottom: 16,
   },
   title: {
