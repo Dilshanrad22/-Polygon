@@ -95,7 +95,7 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.logoutText}>Logout</Text>
           </TouchableOpacity>
         </View>
-        
+
         <View style={styles.totalCard}>
           <Text style={styles.totalLabel}>Total Portfolio Value</Text>
           <Text style={styles.totalValue}>

@@ -27,34 +27,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
         </Text>
       </View>
 
-      <View style={styles.features}>
-        <View style={styles.featureItem}>
-          <Text style={styles.featureIcon}>📈</Text>
-          <Text style={styles.featureText}>Track your investments</Text>
-        </View>
-        <View style={styles.featureItem}>
-          <Text style={styles.featureIcon}>🌱</Text>
-          <Text style={styles.featureText}>Support sustainable farming</Text>
-        </View>
-        <View style={styles.featureItem}>
-          <Text style={styles.featureIcon}>💰</Text>
-          <Text style={styles.featureText}>Earn competitive returns</Text>
-        </View>
-      </View>
-
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => navigation.navigate('Login')}
+          style={styles.getStartedButton}
+          onPress={() => navigation.navigate('AuthOptions')}
         >
-          <Text style={styles.loginButtonText}>Login</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.signupButton}
-          onPress={() => navigation.navigate('Signup')}
-        >
-          <Text style={styles.signupButtonText}>Create Account</Text>
+          <Text style={styles.getStartedButtonText}>Get Started</Text>
         </TouchableOpacity>
       </View>
 
@@ -93,49 +71,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 24,
   },
-  features: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    borderRadius: 16,
-    padding: 24,
-  },
-  featureItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  featureIcon: {
-    fontSize: 28,
-    marginRight: 16,
-  },
-  featureText: {
-    fontSize: 16,
-    color: '#FFFFFF', // Soft White
-    fontWeight: '500',
-  },
   buttonContainer: {
     gap: 12,
   },
-  loginButton: {
+  getStartedButton: {
     backgroundColor: '#F5F5DC', // Beige
-    paddingVertical: 16,
+    paddingVertical: 18,
     borderRadius: 12,
     alignItems: 'center',
   },
-  loginButtonText: {
+  getStartedButtonText: {
     color: '#2E7D32', // Forest Green
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  signupButton: {
-    backgroundColor: '#8D6E63', // Soil Brown
-    paddingVertical: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    borderWidth: 0,
-  },
-  signupButtonText: {
-    color: '#FFFFFF', // Soft White
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   footerText: {
