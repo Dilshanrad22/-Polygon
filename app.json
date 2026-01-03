@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FarmInvest Lite",
-    "slug": "farminvest-lite",
+    "name": "AgriPocket",
+    "slug": "agripocket",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

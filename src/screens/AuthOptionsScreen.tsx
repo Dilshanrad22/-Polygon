@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  Image,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
@@ -16,7 +17,7 @@ type AuthOptionsScreenProps = {
 const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#2E7D32" />
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       
       {/* Back Button */}
       <TouchableOpacity
@@ -28,7 +29,11 @@ const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => 
 
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.logo}>🌾</Text>
+        <Image 
+          source={require('../../assets/mylogo.png')} 
+          style={styles.logo}
+          resizeMode="contain"
+        />
         <Text style={styles.title}>Welcome!</Text>
         <Text style={styles.subtitle}>
           Choose how you'd like to continue
@@ -72,7 +77,7 @@ const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => 
           <Text style={styles.signupIcon}>✨</Text>
           <View style={styles.buttonTextContainer}>
             <Text style={styles.signupButtonText}>Create Account</Text>
-            <Text style={styles.signupButtonSubtext}>New to FarmInvest</Text>
+            <Text style={styles.signupButtonSubtext}>New to AgriPocket</Text>
           </View>
           <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
@@ -108,7 +113,7 @@ const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2E7D32', // Forest Green
+    backgroundColor: '#FFFFFF', // White
     paddingHorizontal: 24,
     paddingTop: 50,
     paddingBottom: 40,
@@ -118,7 +123,7 @@ const styles = StyleSheet.create({
   },
   backButtonText: {
     fontSize: 16,
-    color: '#FFFFFF',
+    color: '#2E7D32', // Forest Green
     fontWeight: '600',
   },
   header: {
@@ -126,22 +131,23 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   logo: {
-    fontSize: 60,
+    width: 100,
+    height: 100,
     marginBottom: 16,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#2E7D32', // Forest Green
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: '#81C784', // Leaf Green
+    color: '#8D6E63', // Soil Brown
     textAlign: 'center',
   },
   features: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: '#2E7D32', // Forest Green
     borderRadius: 16,
     padding: 20,
     marginBottom: 24,
@@ -165,7 +171,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loginButton: {
-    backgroundColor: '#F5F5DC', // Beige
+    backgroundColor: '#2E7D32', // Forest Green
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 16,
@@ -181,17 +187,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   loginButtonText: {
-    color: '#2E7D32', // Forest Green
+    color: '#FFFFFF', // White
     fontSize: 18,
     fontWeight: 'bold',
   },
   loginButtonSubtext: {
-    color: '#8D6E63', // Soil Brown
+    color: '#81C784', // Leaf Green
     fontSize: 13,
     marginTop: 2,
   },
   signupButton: {
-    backgroundColor: '#8D6E63', // Soil Brown
+    backgroundColor: '#81C784', // Leaf Green
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 16,
@@ -204,18 +210,18 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   signupButtonText: {
-    color: '#FFFFFF',
+    color: '#2E7D32', // Forest Green
     fontSize: 18,
     fontWeight: 'bold',
   },
   signupButtonSubtext: {
-    color: '#F5F5DC', // Beige
+    color: '#2E7D32', // Forest Green
     fontSize: 13,
     marginTop: 2,
   },
   arrow: {
     fontSize: 20,
-    color: '#2E7D32',
+    color: '#FFFFFF', // White
     fontWeight: 'bold',
   },
   divider: {
@@ -226,44 +232,44 @@ const styles = StyleSheet.create({
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    backgroundColor: '#E0E0E0', // Light Gray
   },
   dividerText: {
-    color: '#81C784', // Leaf Green
+    color: '#8D6E63', // Soil Brown
     fontSize: 14,
     marginHorizontal: 16,
   },
   guestButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: '#F5F5F5', // Light Gray
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 16,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    borderColor: '#E0E0E0',
   },
   guestIcon: {
     fontSize: 28,
     marginRight: 16,
   },
   guestButtonText: {
-    color: '#FFFFFF',
+    color: '#2E7D32', // Forest Green
     fontSize: 18,
     fontWeight: 'bold',
   },
   guestButtonSubtext: {
-    color: '#81C784', // Leaf Green
+    color: '#8D6E63', // Soil Brown
     fontSize: 13,
     marginTop: 2,
   },
   arrowLight: {
     fontSize: 20,
-    color: '#FFFFFF',
+    color: '#2E7D32', // Forest Green
     fontWeight: 'bold',
   },
   footerText: {
-    color: '#81C784', // Leaf Green
+    color: '#8D6E63', // Soil Brown
     fontSize: 12,
     textAlign: 'center',
     marginTop: 20,

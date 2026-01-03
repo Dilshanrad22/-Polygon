@@ -1,5 +1,5 @@
 /**
- * FarmInvest Lite Color Theme
+ * AgriPocket Color Theme
  * 
  * A nature-inspired color palette for the farm investment app
  */

@@ -19,8 +19,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AUTH_TOKEN_KEY = '@FarmInvest:token';
-const AUTH_USER_KEY = '@FarmInvest:user';
+const AUTH_TOKEN_KEY = '@AgriPocket:token';
+const AUTH_USER_KEY = '@AgriPocket:user';
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);

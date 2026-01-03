@@ -17,13 +17,17 @@ type WelcomeScreenProps = {
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#2E7D32" />
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       
       <View style={styles.header}>
-        <Text style={styles.logo}>🌾</Text>
-        <Text style={styles.title}>FarmInvest Lite</Text>
+        <Image 
+          source={require('../../assets/mylogo.png')} 
+          style={styles.logo}
+          resizeMode="contain"
+        />
+        <Text style={styles.title}>AgriPocket</Text>
         <Text style={styles.subtitle}>
-          Invest in sustainable agriculture and grow your wealth
+          Agriculture in your pocket
         </Text>
       </View>
 
@@ -46,47 +50,50 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2E7D32', // Forest Green
+    backgroundColor: '#FFFFFF', // White
     paddingHorizontal: 24,
-    justifyContent: 'space-between',
-    paddingTop: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingBottom: 40,
   },
   header: {
     alignItems: 'center',
+    marginBottom: 60,
   },
   logo: {
-    fontSize: 80,
-    marginBottom: 16,
+    width: 350,
+    height: 350,
+    marginBottom: 24,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#FFFFFF', // Soft White
+    color: '#2E7D32', // Forest Green
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: '#81C784', // Leaf Green
+    color: '#8D6E63', // Soil Brown
     textAlign: 'center',
     lineHeight: 24,
   },
   buttonContainer: {
-    gap: 12,
+    width: '100%',
+    marginBottom: 20,
   },
   getStartedButton: {
-    backgroundColor: '#F5F5DC', // Beige
+    backgroundColor: '#2E7D32', // Forest Green
     paddingVertical: 18,
     borderRadius: 12,
     alignItems: 'center',
   },
   getStartedButtonText: {
-    color: '#2E7D32', // Forest Green
+    color: '#FFFFFF', // White
     fontSize: 20,
     fontWeight: 'bold',
   },
   footerText: {
-    color: '#81C784', // Leaf Green
+    color: '#8D6E63', // Soil Brown
     fontSize: 12,
     textAlign: 'center',
   },
