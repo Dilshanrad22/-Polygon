@@ -12,8 +12,10 @@ interface AuthContextType {
   user: User | null;
   token: string | null;
   loading: boolean;
+  isGuest: boolean;
   login: (email: string, password: string) => Promise<void>;
   signup: (name: string, email: string, password: string) => Promise<void>;
+  loginAsGuest: () => void;
   logout: () => Promise<void>;
 }
 
@@ -26,6 +28,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
     loadStoredAuth();
@@ -91,6 +94,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUser(data.user);
   };
 
+  const loginAsGuest = () => {
+    setIsGuest(true);
+    setUser({ id: 'guest', name: 'Guest', email: '' });
+  };
+
   const logout = async () => {
     try {
       await AsyncStorage.removeItem(AUTH_TOKEN_KEY);
@@ -101,10 +109,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     
     setToken(null);
     setUser(null);
+    setIsGuest(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, token, loading, isGuest, login, signup, loginAsGuest, logout }}>
       {children}
     </AuthContext.Provider>
   );

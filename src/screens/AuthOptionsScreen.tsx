@@ -9,12 +9,20 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
+import { useAuth } from '../context/AuthContext';
 
 type AuthOptionsScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'AuthOptions'>;
 };
 
 const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => {
+  const { loginAsGuest } = useAuth();
+
+  const handleGuestLogin = () => {
+    loginAsGuest();
+    navigation.navigate('Home');
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
@@ -92,7 +100,7 @@ const AuthOptionsScreen: React.FC<AuthOptionsScreenProps> = ({ navigation }) => 
         {/* Guest Option */}
         <TouchableOpacity
           style={styles.guestButton}
-          onPress={() => navigation.navigate('Home')}
+          onPress={handleGuestLogin}
         >
           <Text style={styles.guestIcon}>👁️</Text>
           <View style={styles.buttonTextContainer}>

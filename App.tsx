@@ -42,8 +42,10 @@ const AppStack = () => {
       screenOptions={{
         headerShown: false,
       }}
+      initialRouteName="Home"
     >
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
     </Stack.Navigator>
   );
 };
@@ -65,7 +67,7 @@ const RootNavigator = () => {
 
   return (
     <NavigationContainer>
-      {user ? <AppStack /> : <AuthStack />}
+      <AuthStack />
     </NavigationContainer>
   );
 };

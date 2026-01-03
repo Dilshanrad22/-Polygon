@@ -62,6 +62,11 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
     setLoading(true);
     try {
       await signup(name.trim(), email.trim().toLowerCase(), password);
+      // Navigate to Home after successful signup
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
     } catch (error: any) {
       Alert.alert('Signup Failed', error.message || 'Something went wrong');
     } finally {

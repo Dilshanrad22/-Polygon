@@ -7,6 +7,9 @@ import {
   Alert,
   StatusBar,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigation';
 import { Investment, NewInvestmentInput } from '../types';
 import { fetchInvestments as getInvestmentsFromApi, createInvestment } from '../services/investmentService';
 import InvestmentList from '../components/InvestmentList';
@@ -14,15 +17,21 @@ import NewInvestmentModal from '../components/NewInvestmentModal';
 import { useAuth } from '../context/AuthContext';
 
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [investments, setInvestments] = useState<Investment[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { user, logout } = useAuth();
+  const { user, logout, isGuest } = useAuth();
 
   const fetchInvestments = async () => {
+    // Don't fetch past investments for guest users
+    if (isGuest) {
+      setLoading(false);
+      return;
+    }
     try {
       setError(null);
       const data = await getInvestmentsFromApi();
@@ -66,6 +75,10 @@ const HomeScreen: React.FC = () => {
     if (typeof window !== 'undefined' && window.confirm) {
       if (window.confirm('Are you sure you want to logout?')) {
         logout();
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Welcome' }],
+        });
       }
     } else {
       Alert.alert(
@@ -73,7 +86,17 @@ const HomeScreen: React.FC = () => {
         'Are you sure you want to logout?',
         [
           { text: 'Cancel', style: 'cancel' },
-          { text: 'Logout', style: 'destructive', onPress: logout },
+          { 
+            text: 'Logout', 
+            style: 'destructive', 
+            onPress: () => {
+              logout();
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'Welcome' }],
+              });
+            }
+          },
         ]
       );
     }

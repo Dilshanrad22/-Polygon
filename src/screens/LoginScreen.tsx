@@ -48,6 +48,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     setLoading(true);
     try {
       await login(email.trim().toLowerCase(), password);
+      // Navigate to Home after successful login
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
     } catch (error: any) {
       Alert.alert('Login Failed', error.message || 'Invalid email or password');
     } finally {
